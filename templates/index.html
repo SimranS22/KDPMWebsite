@@ -1,19 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDPM</title>
+    <!-- tab icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+    <!-- font awesome 4 cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- ion icons -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <!-- google icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- font awesome cdn link new version-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+
+    <link rel="manifest" href="/static/icons/site.webmanifest">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/k_in.css')}}">
+</head>
 <body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Flask
-            </p>
-            <p class="small">
-                Edit <code>templates/index.html</code> and refresh to see your changes!
-            </p>
-        </header>
-    </div>
-</body>
+     <!-- Navigation bar starts-->
+     <header class="header">
+        <!-- Logo -->
+        <div class="logo"><img src="/static/images/kidney_logo1.jpg" alt="logo"></div>
+        <!-- Hamburger icon -->
+        <input class="side-menu" type="checkbox" id="side-menu"/>
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <!-- Menu -->
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Form">Form</a></li>
+            </ul>
+        </nav>
+    </header>
+     <!-- Navigation bar ends -->
 
+     <!-- About section starts -->
+     <section class="image_1">
+        <div class="image_1row">
+            <div class="banner">
+                <img src="/static/images/kidney_bg2.jpg" alt="img" >
+                <p class="headingtext" id="About">ABOUT US<br>
+                    <span class="hea">
+This website leverages a machine learning model to give the general population an indication of whether they are more or less likely to be predisposed to kidney disease.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Form starts -->
+    <section class="formsec">
+    <div class="formcontain" id="Form">
+    <form action="predict" method="POST">
+        <h1>Kidney Disease Prediction</h1>
+        
+        <div class="row">
+            <div class="column">
+                <label for="Name">Patient Name:</label>
+                <input type="text" name="Name">
+            </div>
+            <div class="column">
+                <label for="Age">Age:</label>
+                <input type="number" name="Age">
+            </div>
+        </div>
+        
+        <!-- Add similar rows for other pairs of input fields -->
+        
+        <div class="row">
+            <div class="column">
+                <label for="BloodPressure">Blood Pressure (mm/Hg):</label>
+                <input type="number" name="BloodPressure">
+            </div>
+            <div class="column">
+                <label for="SpecificGravity">Specific Gravity:</label>
+                <select name="SpecificGravity">
+                    <option value="1.005">1.005</option>
+                    <option value="1.010">1.010</option>
+                    <option value="1.015">1.015</option>
+                    <option value="1.020">1.020</option>
+                    <option value="1.025">1.025</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="Albumin">Albumin Level:</label>
+                <select name="Albumin">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="Sugar">Sugar Level:</label>
+                <select name="Sugar">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="RedBloodCells">Red Blood Cells:</label>
+                <select name="RedBloodCells">
+                    <option value="normal">Normal</option>
+                    <option value="abnormal">Abnormal</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="PusCell">Pus Cell:</label>
+                <select name="PusCell">
+                    <option value="normal">Normal</option>
+                    <option value="abnormal">Abnormal</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="PusCellClumps">Pus Cell Clumps:</label>
+                <select name="PusCellClumps">
+                    <option value="present">Present</option>
+                    <option value="notpresent">Not Present</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="Bacteria">Bacteria:</label>
+                <select name="Bacteria">
+                    <option value="present">Present</option>
+                    <option value="notpresent">Not Present</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="BloodGlucoseRandom">Blood Glucose Random (mgs/dl):</label>
+                <input type="number" name="BloodGlucoseRandom">
+            </div>
+            <div class="column">
+                <label for="BloodUrea">Blood Urea (mgs/dl):</label>
+                <input type="number" name="BloodUrea">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="SerumCreatinine">Serum Creatinine (mgs/dl):</label>
+                <input type="number" name="SerumCreatinine" step="any">
+            </div>
+            <div class="column">
+                <label for="Sodium">Sodium (mEq/L):</label>
+                <input type="number" name="Sodium">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="Potassium">Potassium (mEq/L):</label>
+                <input type="number" name="Potassium" step="any">
+            </div>
+            <div class="column">
+                <label for="Haemoglobin">Haemoglobin (gms):</label>
+                <input type="number" name="Haemoglobin" step="any">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="PackedCellVolume">Packed Cell Volume:</label>
+                <input type="number" name="PackedCellVolume">
+            </div>
+            <div class="column">
+                <label for="WhiteBloodCellCount">White Blood Cell Count (cells/cumm):</label>
+                <input type="number" name="WhiteBloodCellCount">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="RedBloodCellCount">Red Blood Cell Count (millions/cmm):</label>
+                <input type="number" name="RedBloodCellCount" step="any">
+            </div>
+            <div class="column">
+                <label for="Hypertension">Hypertension:</label>
+                <select name="Hypertension">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="DiabetesMellitus">Diabetes Mellitus:</label>
+                <select name="DiabetesMellitus">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="CoronaryArteryDisease">Coronary Artery Disease:</label>
+                <select name="CoronaryArteryDisease">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="Appetite">Appetite:</label>
+                <select name="Appetite">
+                    <option value="good">Good</option>
+                    <option value="poor">Poor</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="PedalEdema">Pedal Edema:</label>
+                <select name="PedalEdema">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="Anaemia">Anaemia:</label>
+                <select name="Anaemia">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="column">                
+            </div>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+</section>
+    <!-- Form ends -->
+
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+              </div>
+          <div class="footerBottom">
+            <p>Copyright &copy; 2024; Designed by<span class="designer">OUR TEAM</span></p>
+          </div>
+        </div>
+    </footer>
+
+</body>
 </html>

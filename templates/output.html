@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDPM</title>
+    <!-- tab icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+    <!-- font awesome 4 cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- ion icons -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <!-- google icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- font awesome cdn link new version-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+
+    <link rel="manifest" href="/static/icons/site.webmanifest">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/k_out.css')}}">
+    
+</head>
+<body>
+
+    <div class="form-contain">
+        <form action="back" method="GET">
+
+          <h2 class="reshead">RESULT</h2>
+  
+          {% if Name %}
+              <h3 class="heade">Patient Name - {{Name}}</h3>  
+          {%endif%}
+          
+          {% if yes_ckd > no_ckd %}
+              <h3 class="inp1">There is a {{yes_ckd}} % probability of Chronic Kidney Disease.</h3>
+              <p class="pinp">It is advisable to consult a doctor for further evaluation.</p>
+          {% else %}           
+              <h3 class="inp2">There is an {{no_ckd}} % probability of no Chronic Kidney Disease.</h3>
+              <p class="pinp">You appear to be in good health.</p>
+          {%endif%}
+          
+          <br>
+      
+          <input type="submit" id="btnn" value="Home">
+
+        </form>
+    </div>
+</body>
+</html>
