@@ -8,7 +8,9 @@ For more details about the model and development process, you can refer to the f
 
 ### Demo
 
-Check out the demo here: [Live Demo](https://github.com/user-attachments/assets/85eb07c6-df5a-4bf2-bbbc-b7b48ffa3fd8)
+
+https://github.com/user-attachments/assets/b19dc02c-f362-466f-aa74-5d4de2a2e19d
+
 
 ## 🛠 **Technologies Used**
 - **Flask**: A lightweight web framework for Python to build the backend of the application.
